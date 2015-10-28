@@ -73,6 +73,15 @@
     [self.view layoutIfNeeded];
 }
 
+- (IBAction)didTouchPreviousMonthButton:(id)sender {
+    [_calendarContentView loadPreviousPageWithAnimation];
+}
+
+
+- (IBAction)didTouchNextMonthButton:(id)sender {
+    [_calendarContentView loadNextPageWithAnimation];
+}
+
 #pragma mark - CalendarManager delegate
 
 // Exemple of implementation of prepareDayView method
@@ -166,10 +175,10 @@
     _todayDate = [NSDate date];
     
     // Min date will be 2 month before today
-    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-12];
     
     // Max date will be 2 month after today
-    _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:2];
+    _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:12];
 }
 
 // Used only to have a key for _eventsByDate
